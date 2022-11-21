@@ -11,18 +11,21 @@ def user(user_message):
     for message in user_msg:
         if message in i.movieinput:
             return movie.xyz(message)
+        elif message in i.hello:
+            print("DOBBY :",random.choice(rs.helloreply))
+            return
         elif message in i.operations:
             return mathematics.cal(user_message)
         elif message == "remember":
             return rememberMe.remember(user_message)
         elif message == "reminders":
             return rememberMe.notesStored()
-        elif message == "thankyou":
+        elif message == "thankyou"  or message == "thanks":
             print("DOBBY:", random.choice(rs.feedback))
             ans = input()
             if ans == "yes":
                 print("DOBBY:How may I help you")
-                continue
+
             elif ans == "no":
                 print("DOBBY: If you don't need further help type exit")
             break

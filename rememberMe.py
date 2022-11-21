@@ -4,7 +4,7 @@ def remember(user_message):
     user_message=user_message.split("remember")
     global notes
     notes.append(user_message[1])
-    print("DOBBY: OK, noted")
+    print("DOBBY: OK,added to your Reminders")
 
 def notesStored():
     global notes
