@@ -1,4 +1,5 @@
 import re
+from database import insertdata
 
 
 def cal(user_message):
@@ -8,7 +9,11 @@ def cal(user_message):
         matches = [int(s) for s in re.findall(r'\d+', user_message)]
         nums= sum(matches)
         print("DOBBY:The answer is", nums)
+        insertdata.insert_detail("DOBBY:", nums)
         return nums
+
+
+
 
     def sb(user_message):
         matches = [int(s) for s in re.findall(r'\d+', user_message)]
@@ -16,6 +21,7 @@ def cal(user_message):
         for val in range(1, len(matches)):
             nums = nums - matches[val]
         print("DOBBY:The answer is", nums)
+        insertdata.insert_detail("DOBBY:", nums)
         return nums
 
     def mul(user_message):
@@ -24,6 +30,7 @@ def cal(user_message):
         for val in range(1, len(matches)):
             nums = nums * matches[val]
         print("DOBBY:The answer is", nums)
+        insertdata.insert_detail("DOBBY:", nums)
         return nums
 
     def div(user_message):
@@ -31,6 +38,7 @@ def cal(user_message):
         try:
             nums = matches[0] / matches[1]
             print("DOBBY:The answer is", nums)
+            insertdata.insert_detail("DOBBY:", nums)
             return nums
         except:
             print("Can not divide by zero")

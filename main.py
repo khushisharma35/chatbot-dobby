@@ -2,6 +2,7 @@
 import conversation
 import response as rs
 import random
+from database import insertdata
 
 print("You are talking to chatbot DOBBY")
 print("DOBBY:", random.choice(rs.greeting))
@@ -10,6 +11,7 @@ print("DOBBY :", (random.choice(rs.reply)).format(name))
 
 while True:
     user_message = input(f"{name}:")
+    insertdata.insert_detail(name, user_message)
 
     if "exit"  in user_message:
         break
