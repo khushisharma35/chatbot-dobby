@@ -5,7 +5,7 @@ import mathematics
 import movie
 import random
 from database import insertdata
-from database2 import insertdata
+from database2 import mongotest
 
 
 def user(user_message):
@@ -18,7 +18,7 @@ def user(user_message):
         elif message in i.hello:
             print("DOBBY :",random.choice(rs.helloreply))
             # insertdata.insert_detail("DOBBY",random.choice(rs.helloreply))
-            insertdata.store_data("DOBBY",random.choice(rs.helloreply))
+            mongotest.store_data("DOBBY",random.choice(rs.helloreply))
         elif message in i.operations:
             return mathematics.cal(user_message)
 

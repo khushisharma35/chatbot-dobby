@@ -1,5 +1,5 @@
 # from database import insertdata
-from database2 import insertdata
+from database2 import mongotest
 global notes
 notes = []
 def remember(user_message):
@@ -9,7 +9,7 @@ def remember(user_message):
     # print("DOBBY: OK,added to your Reminders")
     print("DOBBY: OK,added to your Reminders")
     # insertdata.insert_detail("DOBBY:","OK,added to your Reminders" )
-    insertdata.store_data("DOBBY:", "OK,added to your Reminders")
+    mongotest.store_data("DOBBY:", "OK,added to your Reminders")
 def notesStored():
     global notes
     print("DOBBY:")
