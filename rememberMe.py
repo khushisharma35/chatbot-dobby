@@ -1,4 +1,5 @@
-from database import insertdata
+# from database import insertdata
+from database2 import insertdata
 global notes
 notes = []
 def remember(user_message):
@@ -7,7 +8,8 @@ def remember(user_message):
     notes.append(user_message[1])
     # print("DOBBY: OK,added to your Reminders")
     print("DOBBY: OK,added to your Reminders")
-    insertdata.insert_detail("DOBBY:","OK,added to your Reminders" )
+    # insertdata.insert_detail("DOBBY:","OK,added to your Reminders" )
+    insertdata.store_data("DOBBY:", "OK,added to your Reminders")
 def notesStored():
     global notes
     print("DOBBY:")

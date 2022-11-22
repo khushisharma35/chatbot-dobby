@@ -52,10 +52,10 @@ class Database:
 #
 
     def insert_rows(self, query):
-        print("hi")
+        print("hellooo")
         self.cur = self.conn.cursor()
         self.cur.execute(query)
-        print("sd")
+        print("hy")
         self.conn.commit()
-        print("yo")
+        print("bye")
         self.cur.close()
