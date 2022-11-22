@@ -1,6 +1,6 @@
 import re
-# from database import insertdata
-from  database2 import mongotest
+from database import insertdata
+# from  database2 import mongotest
 
 def cal(user_message):
     msg = user_message.split(" ")
@@ -9,8 +9,8 @@ def cal(user_message):
         matches = [int(s) for s in re.findall(r'\d+', user_message)]
         nums= sum(matches)
         print("DOBBY:The answer is", nums)
-        # insertdata.insert_detail("DOBBY:", nums)
-        mongotest.store_data("DOBBY:", nums)
+        insertdata.insert_detail("DOBBY:", nums)
+        # mongotest.store_data("DOBBY:", nums)
         return nums
 
 
@@ -22,8 +22,8 @@ def cal(user_message):
         for val in range(1, len(matches)):
             nums = nums - matches[val]
         print("DOBBY:The answer is", nums)
-        # insertdata.insert_detail("DOBBY:", nums)
-        mongotest.store_data("DOBBY:", nums)
+        insertdata.insert_detail("DOBBY:", nums)
+        # mongotest.store_data("DOBBY:", nums)
         return nums
 
     def mul(user_message):
@@ -32,8 +32,8 @@ def cal(user_message):
         for val in range(1, len(matches)):
             nums = nums * matches[val]
         print("DOBBY:The answer is", nums)
-        # insertdata.insert_detail("DOBBY:", nums)
-        mongotest.store_data("DOBBY:", nums)
+        insertdata.insert_detail("DOBBY:", nums)
+        # mongotest.store_data("DOBBY:", nums)
         return nums
 
     def div(user_message):
@@ -41,8 +41,8 @@ def cal(user_message):
         try:
             nums = matches[0] / matches[1]
             print("DOBBY:The answer is", nums)
-            # insertdata.insert_detail("DOBBY:", nums)
-            mongotest.store_data("DOBBY:", nums)
+            insertdata.insert_detail("DOBBY:", nums)
+            # mongotest.store_data("DOBBY:", nums)
             return nums
         except:
             print("Can not divide by zero")

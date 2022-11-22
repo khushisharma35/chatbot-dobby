@@ -1,7 +1,7 @@
 def create_table():
-    sql=''''create TABLE conversation(
+    sql=['''create TABLE talk(
             id SERIAL primary key,
             speaker varchar(100),
             text varchar(100),
-            time TIMESTAMP);'''
+            time TIMESTAMP default CURRENT_TIMESTAMP);''']
     return sql

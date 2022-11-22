@@ -1,10 +1,13 @@
 # some_file.py
 import sys
+import psycopg2
+from database import createtable
+import config
 # caution: path[0] is reserved for script path (or '' in REPL)
 sys.path.insert(1, '/Users/apple/PycharmProjects/pythonProject')
-import config
-from database import createtable
-import  psycopg2
+
+
+
 
 print(config.databaseName)
 # establishing the connection
@@ -16,7 +19,7 @@ class Database:
         self.username = config.username
         self.password = config.password
         self.port = config.port
-        self.databasebname = config.databaseName
+        self.databasename = config.databaseName
         self.conn = None
         self.cur = None
 
@@ -26,14 +29,15 @@ class Database:
             try:
                 self.conn = psycopg2.connect(
                     host=self.host,
-                    username=self.username,
+                    user=self.username,
                     password=self.password,
                     port=self.port,
-                    databasename=self.dbname
+                    database=self.databasename
                 )
                 self.cur = self.conn.cursor()
                 try:
                     commands = createtable.create_table()
+                    # print(commands)
                     for command in commands:
                         self.cur.execute(command)
 
@@ -42,20 +46,17 @@ class Database:
                     pass
                 self.conn.commit()
                 self.cur.close()
-            except (Exception, psycopg2.DatabaseError) as error:\
+            except (Exception, psycopg2.DatabaseError) as error:
                 print(error)
-            finally:
-                print('Connection done successfully.')
+
+
 # Connection established to: (
 #    'PostgreSQL 11.5, compiled by Visual C++ build 1914, 64-bit',
 # )
 #
 
     def insert_rows(self, query):
-        print("hellooo")
         self.cur = self.conn.cursor()
         self.cur.execute(query)
-        print("hy")
         self.conn.commit()
-        print("bye")
         self.cur.close()

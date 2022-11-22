@@ -5,7 +5,7 @@ import mathematics
 import movie
 import random
 from database import insertdata
-from database2 import mongotest
+# from database2 import mongotest
 
 
 def user(user_message):
@@ -17,8 +17,9 @@ def user(user_message):
             # break
         elif message in i.hello:
             print("DOBBY :",random.choice(rs.helloreply))
-            # insertdata.insert_detail("DOBBY",random.choice(rs.helloreply))
-            mongotest.store_data("DOBBY",random.choice(rs.helloreply))
+
+            insertdata.insert_detail("DOBBY",random.choice(rs.helloreply))
+            # mongotest.store_data("DOBBY",random.choice(rs.helloreply))
         elif message in i.operations:
             return mathematics.cal(user_message)
 
@@ -30,12 +31,16 @@ def user(user_message):
             break
         elif message == "thankyou" or message == "thanks":
             print("DOBBY:",random.choice(rs.feedback))
+            insertdata.insert_detail("DOBBY",random.choice(rs.feedback))
             ans = input()
             if ans == "yes":
                 print("DOBBY:How may I help you")
+                insertdata.insert_detail("DOBBY:How may I help you")
 
             elif ans == "no":
                 print("DOBBY: If you don't need further help type exit")
+                insertdata.insert_detail("DOBBY:If you don't need further help type exit")
+
             break
 
     else:
